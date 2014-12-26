@@ -1,0 +1,27 @@
+{
+  "name": "graph",
+  "version": "0.8.0",
+  "description": "Build directed graphs and export them to different formats",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mobenar/graph"
+  },
+  "keywords": [
+    "node",
+    "graph"
+  ],
+  "author": "Tomas Enarsson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mobenar/graph/issues"
+  },
+  "homepage": "https://github.com/mobenar/graph",
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0"
+  }
+}
