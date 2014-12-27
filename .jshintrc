@@ -1,0 +1,23 @@
+{
+	"bitwise": true,
+	"camelcase": false,
+	"curly": true,
+	"eqeqeq": true,
+	"forin": true,
+	"freeze": true,
+	"immed": true,
+	"latedef": true,
+	"newcap": true,
+	"noarg": true,
+	"noempty": true,
+	"nonew": true,
+	"undef": true,
+	"unused": "vars",
+	"strict": false,
+	"node": true,
+	"maxparams": 5,
+	"maxdepth": 5,
+	"maxstatements": 50,
+	"maxcomplexity": 0,
+	"maxlen": 120
+}
