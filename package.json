@@ -1,6 +1,6 @@
 {
   "name": "graph",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Build directed graphs and export them to different formats",
   "main": "index.js",
   "scripts": {
