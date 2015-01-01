@@ -18,7 +18,7 @@ function createGraph(nodeLength, edges) {
     var graph = new Graph(true, 'test');
 
     for (var i = 1; i <= nodeLength; i++) {
-        graph.addNode(new Graph.Node(i, '' + i));
+        graph.addNode(i, '' + i);
     }
 
     edges.forEach(function (edge) {
