@@ -11,8 +11,15 @@
     "url": "https://github.com/mobenar/graph"
   },
   "keywords": [
+    "graph",
+    "digraph",
+    "diagram",
+    "directed",
     "node",
-    "graph"
+    "edge",
+    "tree",
+    "gml",
+    "tgf"
   ],
   "author": "Tomas Enarsson",
   "license": "MIT",
