@@ -1,7 +1,7 @@
 {
   "name": "mobenga-graph",
   "version": "0.9.0",
-  "description": "Build directed graphs and export them to different formats",
+  "description": "Build directed graphs",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/jshint lib/*.js lib/formats/*.js && ./node_modules/.bin/mocha"
