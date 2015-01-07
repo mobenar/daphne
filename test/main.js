@@ -85,7 +85,7 @@ describe('graph', function () {
         expect(edgeLabels).to.have.members(['1->3']);
     });
 
-    it('should parse JSON format', function () {
+    it.skip('should parse JSON format', function () {
 
         var graph = Graph.parse('json', readFile('graph.json'));
         var nodeIds = getNodeIds(graph);
@@ -95,7 +95,7 @@ describe('graph', function () {
         expect(edgeLabels).to.have.members(fixtures.edgeLabels);
     });
 
-    it('should parse TGF format', function () {
+    it.skip('should parse TGF format', function () {
 
         var graph = Graph.parse('tgf', readFile('graph.tgf'));
         var nodeIds = getNodeIds(graph);
