@@ -4,6 +4,7 @@
   "description": "Build directed graphs",
   "main": "index.js",
   "scripts": {
+    "pretest": "./node_modules/.bin/jshint lib",
     "test": "./node_modules/.bin/mocha"
   },
   "repository": {
