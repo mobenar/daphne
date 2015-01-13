@@ -10,7 +10,7 @@ var fixtures = {
 
 function readFile(filePath) {
 
-    return fs.readFileSync('test/fixtures/' + filePath, { encoding: 'utf8' });
+    return fs.readFileSync('test/' + filePath, { encoding: 'utf8' });
 }
 
 function createGraph(nodeLength, edges) {
