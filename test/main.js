@@ -1,17 +1,6 @@
-var fs = require('fs');
 var expect = require('chai').expect;
 
 var Graph = require('../index');
-
-var fixtures = {
-    nodeIds: [1, 2, 3, 4, 5, 6, 7],
-    edgeLabels: ['A->B', 'A->C', 'B->D', 'B->E', 'C->F', 'C->G']
-};
-
-function readFile(filePath) {
-
-    return fs.readFileSync('test/' + filePath, { encoding: 'utf8' });
-}
 
 function createGraph(nodeLength, edges) {
 
@@ -44,11 +33,6 @@ function getValues(objects, key) {
 function getNodeIds(graph) {
 
     return getValues(graph.getNodes(), 'id');
-}
-
-function getEdgeLabels(graph) {
-
-    return getValues(graph.getEdges(), 'label');
 }
 
 describe('graph', function () {
@@ -85,33 +69,4 @@ describe('graph', function () {
         expect(edgeLabels).to.have.members(['1->3']);
     });
 
-    it.skip('should parse JSON format', function () {
-
-        var graph = Graph.parse('json', readFile('graph.json'));
-        var nodeIds = getNodeIds(graph);
-        var edgeLabels = getEdgeLabels(graph);
-
-        expect(nodeIds).to.have.members(fixtures.nodeIds);
-        expect(edgeLabels).to.have.members(fixtures.edgeLabels);
-    });
-
-    it.skip('should parse TGF format', function () {
-
-        var graph = Graph.parse('tgf', readFile('graph.tgf'));
-        var nodeIds = getNodeIds(graph);
-        var edges = graph.getEdges();
-
-        expect(nodeIds).to.have.members(fixtures.nodeIds);
-        expect(edges.length).to.equal(fixtures.edgeLabels.length);
-    });
-
-    it.skip('should parse GML format', function () {
-
-        var graph = Graph.parse('gml', readFile('graph.gml'));
-        var nodeIds = getNodeIds(graph);
-        var edgeLabels = getEdgeLabels(graph);
-
-        expect(nodeIds).to.have.members(fixtures.nodeIds);
-        expect(edgeLabels).to.have.members(fixtures.edgeLabels);
-    });
 });

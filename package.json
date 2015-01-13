@@ -4,7 +4,7 @@
   "description": "Build directed graphs",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/jshint lib && ./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
