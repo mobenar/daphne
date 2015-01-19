@@ -1,6 +1,6 @@
 {
   "name": "mobenga-graph",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Build directed graphs",
   "main": "index.js",
   "scripts": {

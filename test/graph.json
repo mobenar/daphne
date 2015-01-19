@@ -1,5 +1,6 @@
 {
     "directed": true,
+    "label": "test",
     "nodes": [
         {
             "id": 1,

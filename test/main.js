@@ -1,74 +1,68 @@
-/*global describe, it */
+/*global describe, before, beforeEach, after, it */
 
 var expect = require('chai').expect;
+var fs = require('fs');
 
 var Graph = require('../index');
 
-function createGraph(nodeLength, edges) {
-
-    var graph = new Graph(true, 'test');
-
-    for (var i = 1; i <= nodeLength; i++) {
-        graph.addNode(i, '' + i);
-    }
-
-    edges.forEach(function (edge) {
-
-        var sourceNode = graph.getNodeById(edge[0]);
-        var targetNode = graph.getNodeById(edge[1]);
-        var label = sourceNode.label + '->' + targetNode.label;
-
-        graph.addEdge(new Graph.Edge(sourceNode, targetNode, label));
-    });
-
-    return graph;
-}
-
 function getValues(objects, key) {
 
-    return objects.map(function (object) {
+	return objects.map(function (object) {
 
-        return object[key];
-    });
-}
-
-function getNodeIds(graph) {
-
-    return getValues(graph.getNodes(), 'id');
+		return object[key];
+	});
 }
 
 describe('graph', function () {
 
-    it('should find root nodes', function () {
+	var graph = null;
+	var json = null;
 
-        var graph = createGraph(3, [[1, 2], [1, 3]]);
-        var rootNodes = graph.getRootNodes();
+	before(function () {
 
-        expect(rootNodes.length).to.equal(1);
-        expect(rootNodes[0].id).to.equal(1);
-    });
+		json = JSON.parse(fs.readFileSync('test/graph.json', 'utf8'));
+	});
 
-    it('should find terminal nodes', function () {
+	beforeEach(function () {
 
-        var graph = createGraph(3, [[1, 2], [1, 3]]);
-        var terminalNodes = graph.getTerminalNodes();
-        var nodeIds = getValues(terminalNodes, 'id');
+		graph = new Graph(json);
+	});
 
-        expect(nodeIds).to.have.members([2, 3]);
-    });
+	after(function () {
 
-    it('should remove a node and its edges', function () {
+		graph = null;
+		json = null;
+	});
 
-        var graph = createGraph(3, [[1, 2], [1, 3]]);
-        var rootNode = graph.getNodeById(1);
+	it('should find root nodes', function () {
 
-        graph.removeNode(graph.getNodeById(2));
+		var rootNodes = graph.getRootNodes();
 
-        var nodeIds = getNodeIds(graph);
-        var edgeLabels = getValues(graph.getOutgoingEdges(rootNode), 'label');
+		expect(rootNodes.length).to.equal(1);
+		expect(rootNodes[0].id).to.equal(1);
+	});
 
-        expect(nodeIds).to.have.members([1, 3]);
-        expect(edgeLabels).to.have.members(['1->3']);
-    });
+	it('should find terminal nodes', function () {
+
+		var nodeIds = getValues(graph.getTerminalNodes(), 'id');
+
+		expect(nodeIds).to.have.members([4, 5, 6, 7]);
+	});
+
+	it('should remove a node and its edges', function () {
+
+		graph.removeNode(graph.getNodeById(2));
+
+		var nodeIds = getValues(graph.getNodes(), 'id');
+		var edgeLabels = getValues(graph.getEdges(), 'label');
+
+		expect(nodeIds).to.have.members([1, 3, 4, 5, 6, 7]);
+		expect(edgeLabels).to.have.members(['A->C', 'C->F', 'C->G']);
+	});
+
+	it('should be converted to valid JSON', function () {
+
+		expect(graph.toJSON()).to.deep.equal(json);
+	});
 
 });
